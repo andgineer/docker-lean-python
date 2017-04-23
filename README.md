@@ -18,4 +18,4 @@ And `COPY` command to copy your application into the container.
     
 Also you probably should specify `USER`, `WORKDIR`, `CMD`.
 
-See example in https://github.com/masterandrey/docker-iot-calendar
+See example in https://github.com/masterandrey/docker-amazon-dash-button-hack/blob/master/Dockerfile

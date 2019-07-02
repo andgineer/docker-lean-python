@@ -1,7 +1,7 @@
 Docker Alpine Linux lightweight base container for Python3 applications.
 
 To create your Python application container you should base your container
-on this one (`FROM masterandrey/docker-python-base`).
+on this one (`FROM andgineer/python-base`).
 
 Add your `pip.requirements.txt` with Python libraries list that your application
 requires.
@@ -18,4 +18,4 @@ And `COPY` command to copy your application into the container.
     
 Also you probably should specify `USER`, `WORKDIR`, `CMD`.
 
-See example in https://github.com/masterandrey/docker-amazon-dash-button-hack/blob/master/Dockerfile
+See example in https://github.com/angineer/docker-amazon-dash-button-hack/blob/master/Dockerfile

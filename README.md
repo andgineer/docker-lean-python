@@ -18,4 +18,4 @@ And `COPY` command to copy your application into the container.
     
 Also you probably should specify `USER`, `WORKDIR`, `CMD`.
 
-See example in https://github.com/angineer/docker-amazon-dash-button-hack/blob/master/Dockerfile
+See example in https://github.com/andgineer/docker-amazon-dash-button-hack/blob/master/Dockerfile

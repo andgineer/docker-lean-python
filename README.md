@@ -1,4 +1,4 @@
-Docker Alpine Linux lightweight base container for Python3 applications.
+Docker Alpine Linux lightweight base container for Python3 applications in less than 300M.
 
 To create your Python application container you should base your container
 on this one (`FROM andgineer/python-base`).

@@ -5,7 +5,7 @@
 This Dockerfile offers a base container for Python 3 applications, 
 leveraging the lightweight Alpine Linux. 
 
-The resulting container is approximately 160MB in size.
+The resulting container is approximately 150MB in size.
 
 ## Usage
 If you wish to use this container as the foundational layer for your Python 3 application, 

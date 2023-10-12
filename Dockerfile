@@ -1,6 +1,6 @@
-FROM alpine:3.17
+FROM alpine:3.18
 
-ENV TZ=Europe/Moscow
+ENV TZ=Europe/Belgrade
 
 RUN apk upgrade \
     && apk --update add tzdata curl tar build-base libpcap tcpdump \

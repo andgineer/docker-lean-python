@@ -13,7 +13,7 @@ RUN apk upgrade \
     && curl \
 #         --insecure --proxy-insecure \
          -LsSf https://astral.sh/uv/install.sh | sh \
-    && uv venv \
+    && /root/.cargo/bin/uv venv \
     && rm /usr/lib/python3.11/EXTERNALLY-MANAGED
 
 ENV VIRTUAL_ENV=.venv

@@ -1,4 +1,4 @@
-FROM alpine:3.19
+FROM alpine:3.20
 
 ENV TZ=Europe/Belgrade
 
@@ -14,7 +14,7 @@ RUN apk upgrade \
 #         --insecure --proxy-insecure \
          -LsSf https://astral.sh/uv/install.sh | sh \
     && /root/.cargo/bin/uv venv \
-    && rm /usr/lib/python3.11/EXTERNALLY-MANAGED
+    && rm /usr/lib/python3.12/EXTERNALLY-MANAGED
 
 ENV VIRTUAL_ENV=.venv
-ENV PATH="/root/.cargo/bin:${PATH}"
+ENV PATH="/.venv/bin:/root/.cargo/bin:${PATH}"

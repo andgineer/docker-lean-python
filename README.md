@@ -2,28 +2,21 @@
 
 # Docker Alpine Linux Lightweight Base Container for Python Applications
 
-This Dockerfile offers a base container for Python 3 applications, 
+This Dockerfile offers a base container for Python applications, 
 leveraging the lightweight Alpine Linux. 
 
-The resulting container is approximately 150MB in size.
+As an extremely fast Python package manager, the container uses  
+[Astral's uv](https://github.com/astral-sh/uv).
+
+It automatically creates and activates a virtual uv environment for you.
+You can still use `pip`, but `uv` is significantly faster.
+
+The resulting container is approximately 170MB in size.
 
 ## Usage
-If you wish to use this container as the foundational layer for your Python 3 application, 
-incorporate the subsequent line into your Dockerfile:
 
-    FROM andgineer/python-base
-
-
-Next, transfer your requirements.txt file into the container and install the required Python libraries:
-
-    COPY requirements.txt requirements.txt
-    RUN pip install -r requirements.txt \
-        && apk del python3-dev libxslt-dev libxml2-dev \
-        && rm -rf ~/.pip/cache/ \
-        && rm -rf /var/cache/apk/*
-    
-Conclude by copying your application's files into the container. 
-Adjust the working directory, user, and command as deemed appropriate.
+To use this container as the foundational layer for your Python application, 
+see [example/](example/).
 
 ## Example
 

@@ -1,8 +1,8 @@
-[![Docker Automated build](https://img.shields.io/docker/image-size/andgineer/python-base)](https://hub.docker.com/r/andgineer/python-base)
+[![Docker Automated build](https://img.shields.io/docker/image-size/andgineer/lean-python)](https://hub.docker.com/r/andgineer/lean-python)
 
 # Docker Alpine Linux Lightweight Python Container with UV
 
-Base [Docker container](https://hub.docker.com/r/andgineer/python-base) 
+Base [Docker container](https://hub.docker.com/r/andgineer/lean-python) 
 for Python applications, leveraging the lightweight Alpine Linux. 
 
 The resulting container is approximately 180MB in size.
@@ -17,8 +17,8 @@ You can still use `pip`, but `uv` is significantly faster.
 
 To try simple example from [example/](example/):
 
-    docker build -t python-base example/
-    docker run --rm -it python-base
+    docker build -t lean-python-example example/
+    docker run --rm -it lean-python-example
 
 ## Real Application Example
 
@@ -27,4 +27,4 @@ refer to this [GitHub repository](https://github.com/andgineer/docker-amazon-das
 
 ## Docker Hub
 
-[andgineer/python-base](https://hub.docker.com/r/andgineer/python-base)
+[andgineer/lean-python](https://hub.docker.com/r/andgineer/lean-python)

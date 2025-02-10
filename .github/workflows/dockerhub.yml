@@ -29,18 +29,39 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Build and push to docker hub
+      - name: Build locally to get version info
+        id: build_info
+        uses: docker/build-push-action@v5
+        with:
+          context: ./
+          file: ./Dockerfile
+          push: false
+          load: true
+          tags: temp-image:latest
+          cache-to: type=local,dest=/tmp/.buildx-cache
+
+      - name: Get versions
+        id: get_version
+        run: |
+          PYTHON_VERSION=$(docker run --rm temp-image python3 --version | sed 's/Python //;s/\r//;s/^[ \t]*//;s/[ \t]*$//')
+          ALPINE_VERSION=$(docker run --rm temp-image cat /etc/alpine-release)
+          echo "python_version=${PYTHON_VERSION}" >> $GITHUB_OUTPUT
+          echo "alpine_version=${ALPINE_VERSION}" >> $GITHUB_OUTPUT
+
+      - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/lean-python:latest
-          cache-from: type=registry,ref=user/app:latest
-          cache-to: type=inline
+          tags: |
+            ${{ secrets.DOCKER_HUB_USERNAME }}/lean-python:latest
+            ${{ secrets.DOCKER_HUB_USERNAME }}/lean-python:${{ steps.get_version.outputs.python_version }}
+            ${{ secrets.DOCKER_HUB_USERNAME }}/lean-python:${{ steps.get_version.outputs.python_version }}-${{ steps.get_version.outputs.alpine_version }}
           platforms: |-
             linux/amd64
             linux/arm64
+          cache-from: type=local,src=/tmp/.buildx-cache
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

@@ -24,3 +24,10 @@ refer to this [GitHub repository](https://github.com/andgineer/docker-amazon-das
 ## Docker Hub
 
 [andgineer/lean-python](https://hub.docker.com/r/andgineer/lean-python)
+
+### Tags
+
+* `latest` - latest Alpine Linux with the default Python inside
+* `3.12` - Python 3.12 with the latest Alpine Linux it was built on
+* `3.12-3.20` - Python 3.12 with specific Alpine Linux
+

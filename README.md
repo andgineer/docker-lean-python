@@ -28,6 +28,9 @@ refer to this [GitHub repository](https://github.com/andgineer/docker-amazon-das
 ### Tags
 
 * `latest` - latest Alpine Linux with the default Python inside
-* `3.X` - Python 3.X with the latest Alpine Linux it was built on
-* `3.X-Y.Z` - Python 3.12 with specific Alpine Linux Y.Z
+* `3.X.Y` - Python 3.X.Y (like 3.12.9)
+* `3.X` - Python 3.X (like 3.12) with the latest Alpine Linux it was built on
+* `3.X.Y-A.B.C` - Python 3.X.Y with specific Alpine Linux A.B.C (like 3.12.9-3.20.5)
+* `3.X.Y-A.B` - Python 3.X.Y with specific Alpine Linux A.B (like 3.12.9-3.20)
+* `3.X-A.B` - Python 3.X with specific Alpine Linux A.B (like 3.12-3.20)
 

@@ -13,7 +13,7 @@ RUN apk upgrade \
     && curl \
 #         --insecure --proxy-insecure \
          -LsSf https://astral.sh/uv/install.sh | sh \
-    && $HOME/.local/bin/ venv
+    && $HOME/.local/bin/uv venv
 
 ENV VIRTUAL_ENV=.venv
 ENV PATH="/.venv/bin:/root/.cargo/bin:${PATH}"

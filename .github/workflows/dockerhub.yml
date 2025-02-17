@@ -44,10 +44,10 @@ jobs:
         id: get_version
         run: |
           # Get Python version
-          PYTHON_VERSION=$(docker run --rm temp-image python --version 2>&1 | sed 's/Python //;s/\r//;s/^[ \t]*//;s/[ \t]*$//')
+          PYTHON_VERSION=$(docker run --rm temp-image -c "import sys; print(sys.version.split()[0])")
           
           # Get Alpine version
-          ALPINE_VERSION=$(docker run --rm temp-image /bin/cat /etc/alpine-release)
+          ALPINE_VERSION=$(docker run --rm temp-image -c "import subprocess; print(subprocess.check_output(['cat', '/etc/alpine-release']).decode().strip())")
           
           # Extract two-digit versions
           PYTHON_VERSION_SHORT=$(echo $PYTHON_VERSION | sed -E 's/([0-9]+\.[0-9]+)\.[0-9]+/\1/')

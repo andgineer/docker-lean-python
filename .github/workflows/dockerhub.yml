@@ -43,18 +43,21 @@ jobs:
       - name: Get versions
         id: get_version
         run: |
-          PYTHON_VERSION=$(docker run --rm temp-image python3 --version | sed 's/Python //;s/\r//;s/^[ \t]*//;s/[ \t]*$//')
-          ALPINE_VERSION=$(docker run --rm temp-image cat /etc/alpine-release)
+          # Get Python version
+          PYTHON_VERSION=$(docker run --rm temp-image python --version 2>&1 | sed 's/Python //;s/\r//;s/^[ \t]*//;s/[ \t]*$//')
+          
+          # Get Alpine version
+          ALPINE_VERSION=$(docker run --rm temp-image /bin/cat /etc/alpine-release)
           
           # Extract two-digit versions
           PYTHON_VERSION_SHORT=$(echo $PYTHON_VERSION | sed -E 's/([0-9]+\.[0-9]+)\.[0-9]+/\1/')
           ALPINE_VERSION_SHORT=$(echo $ALPINE_VERSION | sed -E 's/([0-9]+\.[0-9]+)\.[0-9]+/\1/')
           
+          # Output the values
           echo "python_version=${PYTHON_VERSION}" >> $GITHUB_OUTPUT
           echo "alpine_version=${ALPINE_VERSION}" >> $GITHUB_OUTPUT
           echo "python_version_short=${PYTHON_VERSION_SHORT}" >> $GITHUB_OUTPUT
           echo "alpine_version_short=${ALPINE_VERSION_SHORT}" >> $GITHUB_OUTPUT
-
       - name: Build and push
         uses: docker/build-push-action@v5
         with:

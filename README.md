@@ -9,12 +9,28 @@ With high-speed [Astral's uv](https://github.com/astral-sh/uv) Python package ma
 It automatically creates and activates a virtual uv environment for you.
 You can still use `pip`, but `uv` is significantly faster.
 
+The image creates and sets as default a non-root user `leanpython`, 
+following security best practices of not running containers as root.
+
 ## Usage
 
 To try simple example from [example/](example/):
 
     docker build -t lean-python-example example/
     docker run --rm -it lean-python-example
+
+## Using Root User
+
+If you need to run some commands as root, specify the user in your Dockerfile with the USER statement:
+
+```dockerfile
+FROM andgineer/lean-python
+USER root
+...
+# optionally return to leanpython user if you need
+USER leanpython
+...
+```
 
 ## Real Application Example
 

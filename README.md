@@ -19,7 +19,33 @@ To try simple example from [example/](example/):
     docker build -t lean-python-example example/
     docker run --rm -it lean-python-example
 
-## Using Root User
+### Using this image as a base
+
+To use this container as a foundation for your Docker applications 
+that require Python, add the following line to your Dockerfile:
+
+    FROM andgineer/lean-python
+
+Install your dependencies
+
+    COPY requirements.docker.txt requirements.docker.txt
+    RUN uv pip install --no-cache-dir -r requirements.docker.txt
+
+Copy your application files
+
+    COPY src/.  .
+    CMD ["my_script.py"]
+
+Note:
+- The base image already sets `WORKDIR` to `/app`
+- The base image sets `ENTRYPOINT` to `python`
+- When using `COPY src/. .`, all files from `src/` will be copied directly to `/app/`
+
+As a result the container will automatically run `my_script.py` when launched with
+
+    docker run -it --rm my_image
+
+### Using Root User
 
 If you need to run some commands as root, specify the user in your Dockerfile with the USER statement:
 
@@ -32,7 +58,7 @@ USER leanpython
 ...
 ```
 
-## Real Application Example
+### Real Application Example
 
 For an illustrative Dockerfile that employs this base container for a Python application, 
 refer to this [GitHub repository](https://github.com/andgineer/docker-amazon-dash-button-hack/blob/master/Dockerfile).

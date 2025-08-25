@@ -61,7 +61,7 @@ jobs:
           echo "python_version_short=${PYTHON_VERSION_SHORT}" >> $GITHUB_OUTPUT
           echo "alpine_version_short=${ALPINE_VERSION_SHORT}" >> $GITHUB_OUTPUT
       - name: Build and push
-        id: Build and push
+        id: build
         uses: docker/build-push-action@v5
         with:
           context: ./
